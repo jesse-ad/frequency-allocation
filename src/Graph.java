@@ -38,7 +38,7 @@ public class Graph {
 
     public Map<Cell, List<Cell>> createGraph(Cell[] cells) {
         for (int i = 0; i < cells.length; i++) {
-            for (int j = i; j < cells.length; j++) {
+            for (int j = i + 1; j < cells.length; j++) {
                 addCell(cells[i]);
                 if (close(distanceCalculator(cells[i], cells[j]))) {
                     addConnection(cells[i], cells[j]);

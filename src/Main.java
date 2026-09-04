@@ -30,6 +30,17 @@ public class Main {
 
         Map<Cell, List<Cell>> network = graph.createGraph(cells);
         sc.close();
+      
+        for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
+        System.out.print(entry.getKey().id + " -> ");
+
+            for (Cell neighbour : entry.getValue()) {
+                System.out.print(neighbour.id + " ");
+            }
+
+            System.out.println();
+    
+        }
 
     }
 }

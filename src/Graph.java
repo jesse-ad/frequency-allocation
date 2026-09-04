@@ -29,7 +29,7 @@ public class Graph {
         return Math.sqrt((eastdiff * eastdiff) + (northdiff * northdiff));
     }
 
-    public boolean close(double distance) {
+    public boolean cellsClose(double distance) {
         if (distance > threshold) {
             return false;
         }
@@ -40,7 +40,7 @@ public class Graph {
         for (int i = 0; i < cells.length; i++) {
             for (int j = i + 1; j < cells.length; j++) {
                 addCell(cells[i]);
-                if (close(distanceCalculator(cells[i], cells[j]))) {
+                if (cellsClose(distanceCalculator(cells[i], cells[j]))) {
                     addConnection(cells[i], cells[j]);
                 }
             }

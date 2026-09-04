@@ -3,6 +3,7 @@ import java.util.*;
 public class Graph {
 
     private final Map<Cell, List<Cell>> graph;
+    public static double threshold = 250;
 
     public Graph() {
         this.graph = new HashMap<>();
@@ -20,8 +21,6 @@ public class Graph {
         graph.get(dest).add(source);
     }
     
-
-    public static double threshold = 250;
     
     public double distanceCalculator(Cell cell1, Cell cell2) {
         double eastdiff = cell2.easting - cell1.easting;
@@ -30,12 +29,22 @@ public class Graph {
         return Math.sqrt((eastdiff * eastdiff) + (northdiff * northdiff));
     }
 
-    public boolean tooClose(double distance) {
+    public boolean close(double distance) {
         if (distance > threshold) {
             return false;
         }
         return true;
     }
 
-    
+    public Map<Cell, List<Cell>> createGraph(Cell[] cells) {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = i; j < cells.length; j++) {
+                addCell(cells[i]);
+                if (close(distanceCalculator(cells[i], cells[j]))) {
+                    addConnection(cells[i], cells[j]);
+                }
+            }
+        }
+        return graph;
+    }
 }

@@ -1,6 +1,25 @@
 package FrequencyAllocation.src;
-
+import java.util.*;
 public class Graph {
+
+    private final Map<Cell, List<Cell>> graph;
+
+    public Graph() {
+        this.graph = new HashMap<>();
+    }
+
+    public void addCell(Cell cell) {
+        graph.putIfAbsent(cell, new ArrayList<>());
+    }
+    
+    public void addConnection(Cell source, Cell dest) {
+        addCell(source);
+        addCell(dest);
+
+        graph.get(source).add(dest);
+        graph.get(dest).add(source);
+    }
+    
 
     public static double threshold = 250;
     
@@ -17,4 +36,6 @@ public class Graph {
         }
         return true;
     }
+
+    
 }

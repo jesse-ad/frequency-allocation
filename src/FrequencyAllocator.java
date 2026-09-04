@@ -1,5 +1,5 @@
-public class FrequencyAllocator {
-    public static void main(String[] args) {
+package FrequencyAllocation.src;
 
-    }
+public class FrequencyAllocator {
+   
     }

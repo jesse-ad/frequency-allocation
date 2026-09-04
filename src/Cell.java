@@ -1,14 +1,14 @@
-package FrequencyAllocation.src;
+
 
 public class Cell {
     String id;
     int easting;
     int northing;
-    int longitude;
-    int latitude;
+    double longitude;
+    double latitude;
     int frequency;
 
-    public Cell(String id, int easting, int northing, int longitude, int latitude, int frequency) {
+    public Cell(String id, int easting, int northing, double longitude, double latitude, int frequency) {
         this.id = id;
         this.easting = easting;
         this.northing = northing;

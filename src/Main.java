@@ -1,33 +1,35 @@
-package FrequencyAllocation.src;
+
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Graph graph = new Graph();
+        int[] frequencies = new int[]{110, 111, 112, 113, 114, 115};
 
         System.out.println("--- Welcome to the Freqeuncy Allocator! ---");
-        System.out.println("*** Enter 'Run' to run allocator ***");
         System.out.println("Enter number of cells: ");
         int totalCells = sc.nextInt();
-        Cell[] cells = new Cell[totalCells];
-        System.out.println(" Enter cell data (ID, Easting, Northing, Longitude, Latitude)");
-        
-        int index = 0;
+        sc.nextLine();
 
-        while (sc.hasNextLine()) {
+        Cell[] cells = new Cell[totalCells];
+
+        System.out.println("Enter cell data (ID, Easting, Northing, Longitude, Latitude)");
+
+        for (int i = 0; i < totalCells; i++) {
             String[] input = sc.nextLine().split(", ");
+
             String id = input[0];
             int easting = Integer.parseInt(input[1]);
             int northing = Integer.parseInt(input[2]);
-            int longitude = Integer.parseInt(input[3]);
-            int latitude = Integer.parseInt(input[4]);
+            double longitude = Double.parseDouble(input[3]);
+            double latitude = Double.parseDouble(input[4]);
 
             Cell cell = new Cell(id, easting, northing, longitude, latitude, 0);
-            cells[index] = cell;
-            index++;
+            cells[i] = cell;
         }
 
         Map<Cell, List<Cell>> network = graph.createGraph(cells);
+        sc.close();
 
     }
 }

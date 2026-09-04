@@ -1,4 +1,4 @@
-package FrequencyAllocation.src;
+
 import java.util.*;
 public class Graph {
 

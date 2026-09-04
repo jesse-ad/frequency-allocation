@@ -12,7 +12,7 @@ public class Main {
         Cell[] cells = new Cell[totalCells];
         System.out.println(" Enter cell data (ID, Easting, Northing, Longitude, Latitude)");
         
-        
+        int index = 0;
 
         while (sc.hasNextLine()) {
             String[] input = sc.nextLine().split(", ");
@@ -23,7 +23,11 @@ public class Main {
             int latitude = Integer.parseInt(input[4]);
 
             Cell cell = new Cell(id, easting, northing, longitude, latitude, 0);
+            cells[index] = cell;
+            index++;
         }
+
+        Map<Cell, List<Cell>> network = graph.createGraph(cells);
 
     }
 }

@@ -13,6 +13,7 @@ public class Main {
 
         if (!sc.hasNextInt()) {
             System.out.println("Please enter a valid number of cells.");
+            return;
         }
        
         int totalCells = sc.nextInt(); 
@@ -35,14 +36,22 @@ public class Main {
                 System.out.println("Cell ID already exists: " + id);
                 return;
             }
+        
+            try {
+                int easting = Integer.parseInt(input[1]);
+                int northing = Integer.parseInt(input[2]);
+                double longitude = Double.parseDouble(input[3]);
+                double latitude = Double.parseDouble(input[4]);
 
-            int easting = Integer.parseInt(input[1]);
-            int northing = Integer.parseInt(input[2]);
-            double longitude = Double.parseDouble(input[3]);
-            double latitude = Double.parseDouble(input[4]);
+                Cell cell = new Cell(id, easting, northing, longitude, latitude, 0);
+                cells[i] = cell;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Invalid numeric value in cell data.");
+                return;
+            }
 
-            Cell cell = new Cell(id, easting, northing, longitude, latitude, 0);
-            cells[i] = cell;
+            
         }
 
         Map<Cell, List<Cell>> network = nw.createNetwork(cells);

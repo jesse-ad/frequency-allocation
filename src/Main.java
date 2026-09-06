@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Graph graph = new Graph();
+        Network nw = new Network();
         int[] frequencies = new int[]{110, 111, 112, 113, 114, 115};
         FrequencyAllocator fa = new FrequencyAllocator(Integer.MAX_VALUE);
         Set<String> cellIDs = new HashSet<>();
@@ -40,7 +40,7 @@ public class Main {
             cells[i] = cell;
         }
 
-        Map<Cell, List<Cell>> network = graph.createGraph(cells);
+        Map<Cell, List<Cell>> network = nw.createNetwork(cells);
 
         boolean allocationFound = false;
         for (int i = 1; i < frequencies.length + 1; i++) {
@@ -59,7 +59,7 @@ public class Main {
         if (!allocationFound) {
             System.out.println("No valid frequency allocation could be found.");
         }
-        
+
         sc.close();
       
         /*for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {

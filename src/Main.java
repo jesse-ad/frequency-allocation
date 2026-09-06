@@ -1,4 +1,9 @@
-
+/* Main class handles:
+    - Reading of cells
+    - Creating frequency array
+    - Initialising the network
+    - Runs the allocation of frequencies
+ */
 import java.util.*;
 public class Main {
     public static void main(String[] args) {

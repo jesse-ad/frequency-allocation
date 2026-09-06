@@ -1,5 +1,7 @@
+/* Frequency class handles the allocation of frequencies 
+   to all cells in a network 
+*/
 import java.util.*;
-
 public class FrequencyAllocator {
 
     int bestCount;

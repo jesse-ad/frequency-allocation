@@ -1,4 +1,4 @@
-
+/* Cell class represents an individual cell in a network */
 
 public class Cell {
     String id;

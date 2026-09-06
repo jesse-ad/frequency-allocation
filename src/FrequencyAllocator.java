@@ -23,6 +23,9 @@ public class FrequencyAllocator {
 
     public void allocateFrequencies(Cell[] cells, Map<Cell, List<Cell>> network, int currentIndex, int numCells, int[] frequencies) {
         if (currentIndex == numCells) {
+            currentIndex = 0;
+            System.out.println("Complete allocation found");
+
             HashSet<Integer> frequenciesUsed = new HashSet<>();
             for (Cell cell: cells) {
                 frequenciesUsed.add(cell.frequency);
@@ -33,7 +36,9 @@ public class FrequencyAllocator {
                 for (Cell cell : cells) {
                     bestAllocation.put(cell.id, cell.frequency);
                 }
+
             }
+            return;
         }
 
         for (int i = 0; i < frequencies.length; i++) {

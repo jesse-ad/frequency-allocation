@@ -14,10 +14,10 @@ public class Main {
 
         Cell[] cells = new Cell[totalCells];
 
-        System.out.println("Enter cell data (ID, Easting, Northing, Longitude, Latitude)");
+        System.out.println("Enter cell data (ID Easting Northing Longitude Latitude)");
 
         for (int i = 0; i < totalCells; i++) {
-            String[] input = sc.nextLine().split(", ");
+            String[] input = sc.nextLine().split(" ");
 
             String id = input[0];
             int easting = Integer.parseInt(input[1]);
@@ -33,7 +33,7 @@ public class Main {
         fa.allocateFrequencies(cells, network, 0, totalCells, frequencies);
         sc.close();
       
-        for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
+        /*for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
         System.out.print(entry.getKey().id + " -> ");
 
             for (Cell neighbour : entry.getValue()) {
@@ -42,7 +42,9 @@ public class Main {
 
             System.out.println();
     
-        }
+        }*/
+
+            System.out.println(fa.bestAllocation);
 
     }
 }

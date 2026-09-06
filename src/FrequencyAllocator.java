@@ -21,34 +21,25 @@ public class FrequencyAllocator {
         return true;
     }
 
-    public void allocateFrequencies(Cell[] cells, Map<Cell, List<Cell>> network, int currentIndex, int numCells, int[] frequencies) {
+    public boolean allocateFrequencies(Cell[] cells, Map<Cell, List<Cell>> network, int currentIndex, int numCells, int[] frequencies, int maxFrequencies) {
         if (currentIndex == numCells) {
-            currentIndex = 0;
-            System.out.println("Complete allocation found");
-
-            HashSet<Integer> frequenciesUsed = new HashSet<>();
-            for (Cell cell: cells) {
-                frequenciesUsed.add(cell.frequency);
-            }
-            if (bestCount >= frequenciesUsed.size()) {
-                bestCount = frequenciesUsed.size();
-
-                for (Cell cell : cells) {
-                    bestAllocation.put(cell.id, cell.frequency);
-                }
-
-            }
-            return;
+            return true;
         }
 
-        for (int i = 0; i < frequencies.length; i++) {
+        for (int i = 0; i < maxFrequencies; i++) {
             if (isFrequencySafe(cells[currentIndex], network, frequencies[i])) {
                 cells[currentIndex].frequency = frequencies[i];
 
-                allocateFrequencies(cells, network, currentIndex + 1, numCells, frequencies);
-            }
+                boolean success = allocateFrequencies(cells, network, currentIndex + 1, numCells, frequencies, maxFrequencies);
+                
+                if (success) {
+                    return true;
+                }
+            
             cells[currentIndex].frequency = 0;
+            }
         }
+        return false;
     }
 }
 

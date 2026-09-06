@@ -30,7 +30,17 @@ public class Main {
         }
 
         Map<Cell, List<Cell>> network = graph.createGraph(cells);
-        fa.allocateFrequencies(cells, network, 0, totalCells, frequencies);
+
+        for (int i = 1; i < frequencies.length + 1; i++) {
+            boolean success = fa.allocateFrequencies(cells, network, 0, totalCells, frequencies, i);
+
+            if (success) {
+                for (Cell cell : cells) {
+                    fa.bestAllocation.put(cell.id, cell.frequency);
+                }
+                break;
+            }
+        }
         sc.close();
       
         /*for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
@@ -44,7 +54,7 @@ public class Main {
     
         }*/
 
-            System.out.println(fa.bestAllocation);
+
 
     }
 }

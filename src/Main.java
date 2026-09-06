@@ -54,17 +54,6 @@ public class Main {
     
         }*/
 
-            for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
-                Cell cell = entry.getKey();
-
-                System.out.println(cell.id + " (" + cell.frequency + ") -> ");
-
-                for (Cell neighbour : entry.getValue()) {
-                    System.out.println(
-                        "    " + neighbour.id + " (" + neighbour.frequency + ")"
-                    );
-                }
-            }
 
     }
 }

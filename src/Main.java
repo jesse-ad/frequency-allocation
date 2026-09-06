@@ -10,8 +10,13 @@ public class Main {
 
         System.out.println("--- Welcome to the Freqeuncy Allocator! ---");
         System.out.println("Enter number of cells: ");
-        int totalCells = sc.nextInt();
 
+        if (!sc.hasNextInt()) {
+            System.out.println("Please enter a valid number of cells.");
+        }
+       
+        int totalCells = sc.nextInt(); 
+{}
         if (totalCells <= 0) {
             System.out.println("Number of cells must be greater than 0.");
             return;
@@ -72,6 +77,8 @@ public class Main {
             System.out.println();
     
         }*/
+
+            System.out.println(fa.bestAllocation);
 
 
     }

@@ -30,7 +30,10 @@ public class Main {
 
         for (int i = 0; i < totalCells; i++) {
             String[] input = sc.nextLine().split(" ");
-
+            if (input.length != 5) {
+                System.out.println("Invalid cell data. Expected: ID Easting Nothing Longitude Latitude");
+                return;
+            }
             String id = input[0];
             if (!cellIDs.add(id)) {
                 System.out.println("Cell ID already exists: " + id);
@@ -49,9 +52,7 @@ public class Main {
             catch (NumberFormatException e) {
                 System.out.println("Invalid numeric value in cell data.");
                 return;
-            }
-
-            
+            }  
         }
 
         Map<Cell, List<Cell>> network = nw.createNetwork(cells);

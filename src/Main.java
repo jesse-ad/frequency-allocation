@@ -6,10 +6,16 @@ public class Main {
         Graph graph = new Graph();
         int[] frequencies = new int[]{110, 111, 112, 113, 114, 115};
         FrequencyAllocator fa = new FrequencyAllocator(Integer.MAX_VALUE);
+        Set<String> cellIDs = new HashSet<>();
 
         System.out.println("--- Welcome to the Freqeuncy Allocator! ---");
         System.out.println("Enter number of cells: ");
         int totalCells = sc.nextInt();
+
+        if (totalCells <= 0) {
+            System.out.println("Number of cells must be greater than 0.");
+            return;
+        }
         sc.nextLine();
 
         Cell[] cells = new Cell[totalCells];
@@ -20,6 +26,11 @@ public class Main {
             String[] input = sc.nextLine().split(" ");
 
             String id = input[0];
+            if (!cellIDs.add(id)) {
+                System.out.println("Cell ID already exists: " + id);
+                return;
+            }
+
             int easting = Integer.parseInt(input[1]);
             int northing = Integer.parseInt(input[2]);
             double longitude = Double.parseDouble(input[3]);
@@ -31,16 +42,24 @@ public class Main {
 
         Map<Cell, List<Cell>> network = graph.createGraph(cells);
 
+        boolean allocationFound = false;
         for (int i = 1; i < frequencies.length + 1; i++) {
             boolean success = fa.allocateFrequencies(cells, network, 0, totalCells, frequencies, i);
 
             if (success) {
+                allocationFound = true;
+
                 for (Cell cell : cells) {
                     fa.bestAllocation.put(cell.id, cell.frequency);
                 }
                 break;
             }
         }
+
+        if (!allocationFound) {
+            System.out.println("No valid frequency allocation could be found.");
+        }
+        
         sc.close();
       
         /*for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {

@@ -5,6 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Graph graph = new Graph();
         int[] frequencies = new int[]{110, 111, 112, 113, 114, 115};
+        FrequencyAllocator fa = new FrequencyAllocator(Integer.MAX_VALUE);
 
         System.out.println("--- Welcome to the Freqeuncy Allocator! ---");
         System.out.println("Enter number of cells: ");
@@ -29,6 +30,7 @@ public class Main {
         }
 
         Map<Cell, List<Cell>> network = graph.createGraph(cells);
+        fa.allocateFrequencies(cells, network, 0, totalCells, frequencies);
         sc.close();
       
         for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {

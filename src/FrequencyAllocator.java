@@ -2,7 +2,7 @@ import java.util.*;
 
 public class FrequencyAllocator {
 
-    int bestCount = Integer.MAX_VALUE;
+    int bestCount;
     Map<String, Integer> bestAllocation = new HashMap<>();
 
     public FrequencyAllocator(int bestCount) {

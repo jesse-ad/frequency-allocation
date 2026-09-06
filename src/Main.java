@@ -10,19 +10,22 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Network nw = new Network();
         int[] frequencies = new int[]{110, 111, 112, 113, 114, 115};
-        FrequencyAllocator fa = new FrequencyAllocator(Integer.MAX_VALUE);
+        FrequencyAllocator fa = new FrequencyAllocator();
         Set<String> cellIDs = new HashSet<>();
+       
 
         System.out.println("--- Welcome to the Freqeuncy Allocator! ---");
         System.out.println("Enter number of cells: ");
 
+        // If input is not a valid integer.
         if (!sc.hasNextInt()) {
             System.out.println("Please enter a valid number of cells.");
             return;
         }
        
         int totalCells = sc.nextInt(); 
-{}
+
+        // If number of cells are not more than 0.
         if (totalCells <= 0) {
             System.out.println("Number of cells must be greater than 0.");
             return;
@@ -44,13 +47,14 @@ public class Main {
                 System.out.println("Cell ID already exists: " + id);
                 return;
             }
-        
+            // Check if all cell date is in valid formats.
             try {
                 int easting = Integer.parseInt(input[1]);
                 int northing = Integer.parseInt(input[2]);
                 double longitude = Double.parseDouble(input[3]);
                 double latitude = Double.parseDouble(input[4]);
 
+                // Create new cell method.
                 Cell cell = new Cell(id, easting, northing, longitude, latitude, 0);
                 cells[i] = cell;
             }
@@ -60,6 +64,7 @@ public class Main {
             }  
         }
 
+        // Create network
         Map<Cell, List<Cell>> network = nw.createNetwork(cells);
 
         boolean allocationFound = false;
@@ -69,12 +74,13 @@ public class Main {
             if (success) {
                 allocationFound = true;
 
-                for (Cell cell : cells) {
+                for (Cell cell: cells) {
+                // Store best allocation found.
                     fa.bestAllocation.put(cell.id, cell.frequency);
                 }
                 break;
             }
-        }
+        
 
         if (!allocationFound) {
             System.out.println("No valid frequency allocation could be found.");

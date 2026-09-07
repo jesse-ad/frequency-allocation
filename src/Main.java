@@ -74,10 +74,6 @@ public class Main {
             if (success) {
                 allocationFound = true;
 
-                for (Cell cell: cells) {
-                // Store best allocation found.
-                    fa.bestAllocation.put(cell.id, cell.frequency);
-                }
                 break;
             }
         
@@ -88,18 +84,29 @@ public class Main {
 
         sc.close();
       
-        /*for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
-        System.out.print(entry.getKey().id + " -> ");
+        System.out.println("\n--- Frequency Allocation ---");
+
+        for (Cell cell : cells) {
+            System.out.println(
+                cell.id + " " +
+                cell.easting + " " +
+                cell.northing + " " +
+                cell.frequency
+            );
+        }
+
+        System.out.println("\n--- Network Connections ---");
+
+        for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
+            Cell cell = entry.getKey();
 
             for (Cell neighbour : entry.getValue()) {
-                System.out.print(neighbour.id + " ");
+                // Only print each connection once
+                if (cell.id.compareTo(neighbour.id) < 0) {
+                    System.out.println(cell.id + " " + neighbour.id);
+                }
             }
-
-            System.out.println();
-    
-        }*/
-
-            System.out.println(fa.bestAllocation);
+        }
 
 
         }

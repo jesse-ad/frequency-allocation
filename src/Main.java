@@ -77,9 +77,12 @@ public class Main {
                 break;
             }
         
-
+        }
         if (!allocationFound) {
             System.out.println("No valid frequency allocation could be found.");
+        }
+        else {
+            NetworkVisualiser.createImage(cells, network, "Network.png");
         }
 
         sc.close();
@@ -87,28 +90,12 @@ public class Main {
         System.out.println("\n--- Frequency Allocation ---");
 
         for (Cell cell : cells) {
-            System.out.println(
-                cell.id + " " +
-                cell.easting + " " +
-                cell.northing + " " +
-                cell.frequency
-            );
+            System.out.println(cell.id + " " + cell.frequency);
         }
 
-        System.out.println("\n--- Network Connections ---");
-
-        for (Map.Entry<Cell, List<Cell>> entry : network.entrySet()) {
-            Cell cell = entry.getKey();
-
-            for (Cell neighbour : entry.getValue()) {
-                // Only print each connection once
-                if (cell.id.compareTo(neighbour.id) < 0) {
-                    System.out.println(cell.id + " " + neighbour.id);
-                }
-            }
-        }
+    
+        
 
 
         }
     }
-}

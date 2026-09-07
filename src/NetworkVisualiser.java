@@ -1,3 +1,8 @@
+/* Network visualisation class handles generating an image
+   for the network to show cell locations, relationships,
+   and allocated frequencies.
+ */
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;

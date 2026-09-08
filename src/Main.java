@@ -85,13 +85,14 @@ public class Main {
             NetworkVisualiser.createImage(cells, network, "Network.png");
         }
 
-        sc.close();
+       
       
         System.out.println("\n--- Frequency Allocation ---");
 
         for (Cell cell : cells) {
             System.out.println(cell.id + " " + cell.frequency);
         }
+        sc.close();
 
     
         

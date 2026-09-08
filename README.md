@@ -9,7 +9,7 @@ The application assigns frequencies from 110–115 while ensuring that geographi
 - Java
 - Make
 
-## Running the Program
+## Running the Program - (make sure you are in the src folder)
 
 Compile the program:
 make

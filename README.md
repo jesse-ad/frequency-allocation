@@ -18,8 +18,9 @@ Run the program:
 make run
 
 - The program will ask for the number of cells and then details for each cell in the following format: ID Easting Northing Longitude Latitude
-- Example: A 536660 183800 -0.03098 51.53657
-           B 537032 184006 -0.02554 51.53833
+- Example:
+  A 536660 183800 -0.03098 51.53657
+  B 537032 184006 -0.02554 51.53833
 - The program then will display:
     - The frequency allocation to each cell
     - The network connections between each cell
